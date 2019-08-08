@@ -1,0 +1,5 @@
+# node modedule 
+**/node_modules
+
+# lock file
+**/*.lock
