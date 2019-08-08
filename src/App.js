@@ -4,10 +4,11 @@ import './App.css'
 import PATH from './Path';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
-import NotFound from './Section/NotFound/NotFound';
-import HomeSection from './Section/HomeSection/HomeSection';
-import ProblemsSection from './Section/ProblemsSection/ProblemsSection';
-import ProblemWithIDSection from './Section/ProblemWithIDSection/ProblemWithIDSection';
+import NotFound from './Sections/NotFound/NotFound';
+import HomeSection from './Sections/HomeSection/HomeSection';
+import ProblemsSection from './Sections/ProblemsSection/ProblemsSection';
+import ProblemWithIDSection from './Sections/ProblemWithIDSection/ProblemWithIDSection';
+import SignUpSection from './Sections/SignUpSection/SignUpSection';
 const listOfSections=['HOME','CONTESTS','PROBLEMS','FAQ','BUG_REPORT'];
 
 function App() {
@@ -22,8 +23,7 @@ function App() {
               <Route exact path={PATH.HOME} component ={HomeSection}/>
               <Redirect from={`${PATH.LOGIN}*`} to={PATH.LOGIN}/>
               <Route path={PATH.LOGIN} component = {null}/>
-              <Redirect from={`${PATH.SIGNUP}*`} to={PATH.SIGNUP}/>
-              <Route path={PATH.SIGNUP} component = {null}/>
+              <Route path={PATH.SIGNUP} component = {SignUpSection}/>
               <Route exact path={PATH.PROBLEMS} component={ProblemsSection}/>
               <Route path={`${PATH.PROBLEMS}:id/`} component={ProblemWithIDSection}/>
               {/*this is no match page*/}
