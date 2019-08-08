@@ -10,7 +10,7 @@ const LoginSection = ()=>{
         const user_name=document.getElementById("login-user-name").value;
         const password=document.getElementById("login-password").value;
         if (user_name==="" || password==="") {console.log("error");return;}
-        let response = await accountManager.doSignUp(
+        let response = await accountManager.doLogin(
             {
                 user_name:user_name,
                 password:password

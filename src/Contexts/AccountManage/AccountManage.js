@@ -27,7 +27,7 @@ class AccountManager{
     }
     async doLogin(data){
         console.log(data);
-        const url_backend="http://127.0.0.1:8000/users/user_register/";
+        const url_backend="http://127.0.0.1:8000/users/user_login/";
         let response = await fetch(url_backend,{
             method:'POST',
             headers: {
