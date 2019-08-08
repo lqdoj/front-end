@@ -1,0 +1,10 @@
+.App{
+    min-height: 100vh;
+    width:100%;
+    position: absolute;
+}
+.app-body{
+    padding-bottom: 15vh;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+}

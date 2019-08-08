@@ -1,0 +1,15 @@
+.post-component{
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+.post-component__title{
+    width: 100%;
+    border-bottom: 1px solid grey;
+}
+.post-component__title > span{
+    float: right;
+}
+.post-component__content > span{
+    color:red;
+}

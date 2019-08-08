@@ -1,0 +1,7 @@
+.footer-component{
+    height: 15vh;
+    position:absolute;
+    bottom:0;
+    width:100%; 
+    background:#6cf;
+}

@@ -1,0 +1,20 @@
+
+.header-component_login-bar{
+    display:flex;
+    flex-flow: row;
+    position: fixed;
+    right: 0;
+    
+}
+.header-component_login-bar > *{
+    margin-right: 20px;
+}
+.top-logo{
+    height: 100%;
+    width:auto;
+}
+.logo-div{
+    min-height: 90px;
+    height: 15vh;
+    background: linear-gradient(to right,white,white,lightblue);
+}
