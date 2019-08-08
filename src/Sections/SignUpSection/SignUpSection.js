@@ -1,59 +1,40 @@
-import React,{useState,useEffect} from 'react';
-
-const postData = (data) =>{
-    console.log(data);
-        const url_backend="http://127.0.0.1:8000/users/user_register/";
-    fetch(url_backend,{
-        method:'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            data:data
-        })
-    }).then(Response=>console.log(Response))
-    .catch(error => console.log(error));
-}
+import React,{useState,useEffect,useContext} from 'react';
+import {Redirect} from 'react-router-dom';
+import PATH from '../../Path';
+import AccountManageContext from '../../Contexts/AccountManage/AccountManage';
 
 const SignUpSection = () =>{
-    const [data,setData]=useState(
-        {
-            email:"",
-            user_name:"",
-            password:"",
-            check:false
-        }
-    );
-    
-    const handleSubmit = (e)=>{
+    let accountManager=useContext(AccountManageContext);
+    const [status,setStatus]=useState(false);
+    const handleSubmit = async (e)=>{
         const user_name=document.getElementById("register-user-name").value;
         const email=document.getElementById("register-email").value;
         const password=document.getElementById("register-password").value;
         if (user_name==="" || email==="" || password==="") {console.log("error");return;}
-        setData(prev=>{
-            return (
-                {
-                    user_name:user_name,
-                    email:email,
-                    password:password,
-                    check:true
-                }
-            )
+        let response = await accountManager.doSignUp(
+            {
+                user_name:user_name,
+                email:email,
+                password:password
+            })
+        setStatus(prev=>{
+            return response    
         })
     }
-    useEffect(()=>{
-        if (data.check) postData(data);
-    });
     return(
         <div>
-            <label> User Name:</label>
-            <input id="register-user-name" type="text"/>
-            <label> Email: </label>
-            <input id="register-email" type="emai"/>
-            <label> Password:</label>
-            <input id="register-password" type="password"/>
-            <button onClick={handleSubmit}> submit</button>
+            {(status)?
+            <Redirect to={PATH.HOME}/>
+            :(<React.Fragment>
+                <label> User Name:</label>
+                <input id="register-user-name" type="text"/>
+                <label> Email: </label>
+                <input id="register-email" type="emai"/>
+                <label> Password:</label>
+                <input id="register-password" type="password"/>
+                <button onClick={handleSubmit}> submit</button>
+            </React.Fragment>
+            )}
         </div>
     )
 }

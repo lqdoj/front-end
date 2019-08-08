@@ -9,11 +9,15 @@ import HomeSection from './Sections/HomeSection/HomeSection';
 import ProblemsSection from './Sections/ProblemsSection/ProblemsSection';
 import ProblemWithIDSection from './Sections/ProblemWithIDSection/ProblemWithIDSection';
 import SignUpSection from './Sections/SignUpSection/SignUpSection';
+import LoginSection from './Sections/LoginSection/LoginSection';
+import AccountManageContext, {AccountManager} from './Contexts/AccountManage/AccountManage';
+
 const listOfSections=['HOME','CONTESTS','PROBLEMS','FAQ','BUG_REPORT'];
 
 function App() {
   return (
     <div className="App">
+    <AccountManageContext.Provider value={new AccountManager()}>
       <Router>
         <Header listOfSections={listOfSections}/>
           {/* Below is main part of website */}
@@ -21,8 +25,7 @@ function App() {
           <div className="app-body_left">
             <Switch>
               <Route exact path={PATH.HOME} component ={HomeSection}/>
-              <Redirect from={`${PATH.LOGIN}*`} to={PATH.LOGIN}/>
-              <Route path={PATH.LOGIN} component = {null}/>
+              <Route path={PATH.LOGIN} component = {LoginSection}/>
               <Route path={PATH.SIGNUP} component = {SignUpSection}/>
               <Route exact path={PATH.PROBLEMS} component={ProblemsSection}/>
               <Route path={`${PATH.PROBLEMS}:id/`} component={ProblemWithIDSection}/>
@@ -36,6 +39,7 @@ function App() {
           {/* Above is main part of website */}
         <Footer/>
       </Router>
+    </AccountManageContext.Provider>
     </div>
   );
 }
