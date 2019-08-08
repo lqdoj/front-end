@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 
 const postData = (data) =>{
     console.log(data);
-    const url_backend="";
+        const url_backend="http://127.0.0.1:8000/users/user_register/";
     fetch(url_backend,{
         method:'POST',
         headers: {
