@@ -15,7 +15,8 @@ const SignUpSection = () =>{
             {
                 username:username,
                 email:email,
-                password:password
+                password1:password,
+		password2:password
             })
         setStatus(prev=>{
             return response    
