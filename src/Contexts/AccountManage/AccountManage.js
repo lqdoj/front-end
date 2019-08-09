@@ -4,7 +4,7 @@ import {PATH} from '../../PathApi';
 const AccountManageContext = React.createContext(null);
 class AccountManager{
     constructor(){
-        this.currentState=false;
+        this.token="";
     }
     async doSignUp(data){
         try{
@@ -21,7 +21,7 @@ class AccountManager{
     }
     doCheck(){
         console.log("CHECK");
-        return this.currentState;
+        return (this.token==="");
     }
     async doLogin(data){
         try{
@@ -35,9 +35,14 @@ class AccountManager{
             console.log(error);
         }
     }
-    doLogout(){
-        this.currentState=false;
-        console.log(this.currentState);
+    async doLogout(){
+        this.token="";
+        try{
+            await doPost(PATH.LOGOUT,{data:this.token});
+        }
+        catch (error){
+            console.log(error);
+        }
     }
 }
 

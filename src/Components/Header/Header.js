@@ -23,14 +23,12 @@ const Header = (props) =>{
     );    
     const loggedIn = (
         <div className="header-component_login-bar">
-            <Link onClick={
-                ()=>{
+            <Link onClick={()=>{
                     accountManager.doLogout();
                     setStatus(accountManager.doCheck());
                 }
-
             }
-                to={PATH.HOME}>
+            to={PATH.HOME}>
                 Log Out
             </Link>
             
