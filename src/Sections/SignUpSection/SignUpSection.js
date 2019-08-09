@@ -7,13 +7,13 @@ const SignUpSection = () =>{
     let accountManager=useContext(AccountManageContext);
     const [status,setStatus]=useState(false);
     const handleSubmit = async (e)=>{
-        const user_name=document.getElementById("register-user-name").value;
+        const username=document.getElementById("register-user-name").value;
         const email=document.getElementById("register-email").value;
         const password=document.getElementById("register-password").value;
-        if (user_name==="" || email==="" || password==="") {console.log("error");return;}
+        if (username==="" || email==="" || password==="") {console.log("error");return;}
         let response = await accountManager.doSignUp(
             {
-                user_name:user_name,
+                username:username,
                 email:email,
                 password:password
             })

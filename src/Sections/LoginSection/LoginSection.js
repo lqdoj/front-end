@@ -7,12 +7,12 @@ const LoginSection = ()=>{
     let accountManager=useContext(AccountManageContext);
     const [status,setStatus]=useState(false);
     const handleLogin = async (e)=>{
-        const user_name=document.getElementById("login-user-name").value;
+        const username=document.getElementById("login-user-name").value;
         const password=document.getElementById("login-password").value;
-        if (user_name==="" || password==="") {console.log("error");return;}
+        if (username==="" || password==="") {console.log("error");return;}
         let response = await accountManager.doSignUp(
             {
-                user_name:user_name,
+                username:username,
                 password:password
             })
         setStatus(prev=>{
