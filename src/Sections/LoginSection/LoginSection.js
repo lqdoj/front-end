@@ -5,12 +5,12 @@ import PATH from '../../Path';
 import AccountManageContext from '../../Contexts/AccountManage/AccountManage';
 const LoginSection = ()=>{
     let accountManager=useContext(AccountManageContext);
-    const [status,setStatus]=useState(false);
+    const [status,setStatus]=useState([false,""]);
     const handleLogin = async (e)=>{
         const username=document.getElementById("login-user-name").value;
         const password=document.getElementById("login-password").value;
         if (username==="" || password==="") {console.log("error");return;}
-        let response = await accountManager.doSignUp(
+        let response = await accountManager.doLogin(
             {
                 username:username,
                 password:password
@@ -21,7 +21,8 @@ const LoginSection = ()=>{
     }
     return (
         <div>
-        {status?<Redirect to={PATH.HOME}/>:(
+            <div>{status[1]}</div>
+        {status[0]?<Redirect to={PATH.HOME}/>:(
             <div>
         <label> User Name:</label>
         <input id="login-user-name" type="text"/>

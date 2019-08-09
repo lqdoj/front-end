@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css'
 import PATH from './Path';
@@ -15,6 +15,7 @@ import AccountManageContext, {AccountManager} from './Contexts/AccountManage/Acc
 const listOfSections=['HOME','CONTESTS','PROBLEMS','FAQ','BUG_REPORT'];
 
 function App() {
+  const [loginStatus,setLogin] = useState(false);
   return (
     <div className="App">
     <AccountManageContext.Provider value={new AccountManager()}>
