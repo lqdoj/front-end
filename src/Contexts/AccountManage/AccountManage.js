@@ -1,44 +1,39 @@
 import React from 'react';
-
+import {doPost} from '../HTTPRequest';
+import {PATH} from '../../PathApi';
 const AccountManageContext = React.createContext(null);
-
 class AccountManager{
     constructor(){
         this.currentState=false;
     }
     async doSignUp(data){
-        console.log(data);
-        const url_backend="http://127.0.0.1:8000/users/user_register/";
-        let response = await fetch(url_backend,{
-            method:'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                data:data
-            })
-        });
-        return true;
+        try{
+            console.log(data);
+            let response = await doPost(PATH.SIGNUP,data);
+            if (response.status===201) 
+                return [true];
+            let responseData = await response.json();
+            return [false,responseData];
+        }
+        catch(error){
+            console.log(error);
+        }
     }
     doCheck(){
         console.log("CHECK");
         return this.currentState;
     }
     async doLogin(data){
-        console.log(data);
-        const url_backend="http://127.0.0.1:8000/users/user_login/";
-        let response = await fetch(url_backend,{
-            method:'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                data:data
-            })
-        });
-        return true;
+        try{
+            console.log(data);
+            let response = await doPost(PATH.LOGIN,data);
+            let responseData = await response.json();
+            console.log(responseData);
+            return true;
+        }
+        catch (error){
+            console.log(error);
+        }
     }
     doLogout(){
         this.currentState=false;
