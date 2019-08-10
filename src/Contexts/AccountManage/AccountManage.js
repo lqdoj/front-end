@@ -1,7 +1,7 @@
 import React from 'react';
 import {doPost} from '../HTTPRequest';
 import {PATH} from '../../PathApi';
-const AccountManageContext = React.createContext(null);
+
 class AccountManager{
     constructor(){
         this.token="";
@@ -50,6 +50,6 @@ class AccountManager{
         }
     }
 }
-
+const AccountManageContext = React.createContext(new AccountManager());
 export default AccountManageContext;
-export {AccountManager};
+

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css'
 import PATH from './Path';
@@ -10,23 +10,28 @@ import ProblemsSection from './Sections/ProblemsSection/ProblemsSection';
 import ProblemWithIDSection from './Sections/ProblemWithIDSection/ProblemWithIDSection';
 import SignUpSection from './Sections/SignUpSection/SignUpSection';
 import LoginSection from './Sections/LoginSection/LoginSection';
-import AccountManageContext, {AccountManager} from './Contexts/AccountManage/AccountManage';
+import AccountManageContext from './Contexts/AccountManage/AccountManage';
 
 const listOfSections=['HOME','CONTESTS','PROBLEMS','FAQ','BUG_REPORT'];
 
 const App = () => {
-  const [loginStatus,setLogin] = useState(false);
+  const accountManager=useContext(AccountManageContext);
+  const [loginStatus,setLogin] = useState(accountManager.doCheck());
   return (
     <div className="App">
-    <AccountManageContext.Provider value={{manager:new AccountManager(),setLogin:setLogin}}>
       <Router>
-        <Header listOfSections={listOfSections} status={loginStatus}/>
+        <Header listOfSections={listOfSections} status={loginStatus} setLogin={setLogin}/>
           {/* Below is main part of website */}
         <div className="app-body">
           <div className="app-body_left">
             <Switch>
               <Route exact path={PATH.HOME} component ={HomeSection}/>
-              <Route path={PATH.LOGIN} component = {LoginSection}/>
+              <Route path={PATH.LOGIN} 
+                render = {(props)=>{
+                  return(
+                    <LoginSection {...props} setLogin={setLogin}/>
+                  )
+              }}/>
               <Route path={PATH.SIGNUP} component = {SignUpSection}/>
               <Route exact path={PATH.PROBLEMS} component={ProblemsSection}/>
               <Route path={`${PATH.PROBLEMS}:id/`} component={ProblemWithIDSection}/>
@@ -40,9 +45,7 @@ const App = () => {
           {/* Above is main part of website */}
         <Footer/>
       </Router>
-    </AccountManageContext.Provider>
     </div>
   );
 }
-
 export default App;

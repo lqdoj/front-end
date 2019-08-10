@@ -3,9 +3,10 @@ import {Redirect} from 'react-router-dom';
 import PATH from '../../Path';
 
 import AccountManageContext from '../../Contexts/AccountManage/AccountManage';
-const LoginSection = ()=>{
-    let accountManager=useContext(AccountManageContext).manager;
-    let setter=useContext(AccountManageContext).setLogin;
+const LoginSection = (props)=>{
+    let accountManager=useContext(AccountManageContext);
+    console.log(accountManager);
+    let setter=props.setLogin;
     const [status,setStatus]=useState([false,""]);
     const handleLogin = async (e)=>{
         const username=document.getElementById("login-user-name").value;

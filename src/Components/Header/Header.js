@@ -1,4 +1,4 @@
-import React,{useContext,useState} from 'react';
+import React,{useContext} from 'react';
 import './Header.css';
 import {Link} from 'react-router-dom';
 import PATH from '../../Path';
@@ -9,8 +9,8 @@ import AccountManageContext from '../../Contexts/AccountManage/AccountManage';
 
 
 const Header = (props) =>{
-    let accountManager=useContext(AccountManageContext).manager;
-    let setter=useContext(AccountManageContext).setLogin;
+    let accountManager=useContext(AccountManageContext);
+    let setter=props.setLogin;
     const toLogin = (
         <div className="header-component_login-bar">
             <Link to={PATH.LOGIN}>
