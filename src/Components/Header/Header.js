@@ -9,8 +9,8 @@ import AccountManageContext from '../../Contexts/AccountManage/AccountManage';
 
 
 const Header = (props) =>{
-    let accountManager=useContext(AccountManageContext);
-    const [status,setStatus]=useState(accountManager.doCheck());
+    let accountManager=useContext(AccountManageContext).manager;
+    let setter=useContext(AccountManageContext).setLogin;
     const toLogin = (
         <div className="header-component_login-bar">
             <Link to={PATH.LOGIN}>
@@ -25,7 +25,7 @@ const Header = (props) =>{
         <div className="header-component_login-bar">
             <Link onClick={()=>{
                     accountManager.doLogout();
-                    setStatus(accountManager.doCheck());
+                    setter(false);
                 }
             }
             to={PATH.HOME}>
@@ -36,7 +36,7 @@ const Header = (props) =>{
     );    
     return (
         <div id="Header">
-            {(status===false)?toLogin:loggedIn}
+            {(props.status===false)?toLogin:loggedIn}
             <div className="logo-div">
                 <a href="/">
                     <img src={logo} className="top-logo" alt="le quy don logo"/>

@@ -4,7 +4,8 @@ import PATH from '../../Path';
 
 import AccountManageContext from '../../Contexts/AccountManage/AccountManage';
 const LoginSection = ()=>{
-    let accountManager=useContext(AccountManageContext);
+    let accountManager=useContext(AccountManageContext).manager;
+    let setter=useContext(AccountManageContext).setLogin;
     const [status,setStatus]=useState([false,""]);
     const handleLogin = async (e)=>{
         const username=document.getElementById("login-user-name").value;
@@ -14,7 +15,8 @@ const LoginSection = ()=>{
             {
                 username:username,
                 password:password
-            })
+            });
+        if (response[0]) setter(true);
         setStatus(prev=>{
             return response    
         })

@@ -14,13 +14,13 @@ import AccountManageContext, {AccountManager} from './Contexts/AccountManage/Acc
 
 const listOfSections=['HOME','CONTESTS','PROBLEMS','FAQ','BUG_REPORT'];
 
-function App() {
+const App = () => {
   const [loginStatus,setLogin] = useState(false);
   return (
     <div className="App">
-    <AccountManageContext.Provider value={new AccountManager()}>
+    <AccountManageContext.Provider value={{manager:new AccountManager(),setLogin:setLogin}}>
       <Router>
-        <Header listOfSections={listOfSections}/>
+        <Header listOfSections={listOfSections} status={loginStatus}/>
           {/* Below is main part of website */}
         <div className="app-body">
           <div className="app-body_left">
