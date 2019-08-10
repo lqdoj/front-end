@@ -41,9 +41,9 @@ class AccountManager{
         }
     }
     async doLogout(){
-        this.token="";
         try{
-            await doPost(PATH.LOGOUT,null,{"LQDOJ-TOKEN":`${this.token}`});   
+            await doPost(PATH.LOGOUT,null,{"LQDOJ-TOKEN":`${this.token}`});
+	    this.token="";
         }
         catch (error){
             console.log(error);
