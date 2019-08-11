@@ -51,7 +51,6 @@ class AccountManager{
         }
     }
     async doLogout(){
-        this.token="";
         try{
             await doPost(PATH.USER.LOGOUT,null,{"LQDOJ-TOKEN":`${this.cookie.remove('token')}`});   
         }
