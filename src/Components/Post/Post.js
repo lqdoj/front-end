@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import './Post.css';
 const maxLengthContext=1000;
-const getTime = (datetime) =>{
+const getTime = (stringDatetime) =>{
+    let datetime=new Date(stringDatetime);
     let curTime=new Date();
     
     let diff=curTime-datetime;
@@ -18,11 +19,11 @@ const getTime = (datetime) =>{
 }
 const Post = (props) =>{
     let post=props.post;
-    const [timePosting,setTimePosting]=useState(getTime(post.date));
+    const [timePosting,setTimePosting]=useState(getTime(post.time));
     
     useEffect(()=>{
         let timeId=setInterval(()=>{
-            setTimePosting(prev=>{return getTime(post.date);});
+            setTimePosting(prev=>{return getTime(post.time);});
         },1000);
         return ()=>clearInterval(timeId);
     },[setTimePosting,post])

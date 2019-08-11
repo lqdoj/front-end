@@ -1,4 +1,4 @@
-import React,{useState,useContext} from 'react';
+import React,{useState,useContext,useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css'
 import PATH from './Path';
@@ -11,12 +11,20 @@ import ProblemWithIDSection from './Sections/ProblemWithIDSection/ProblemWithIDS
 import SignUpSection from './Sections/SignUpSection/SignUpSection';
 import LoginSection from './Sections/LoginSection/LoginSection';
 import AccountManageContext from './Contexts/AccountManage/AccountManage';
-
 const listOfSections=['HOME','CONTESTS','PROBLEMS','FAQ','BUG_REPORT'];
 
 const App = () => {
   const accountManager=useContext(AccountManageContext);
-  const [loginStatus,setLogin] = useState(accountManager.doCheck());
+  const [loginStatus,setLogin] = useState(false);
+  useEffect(()=>{
+    const a= async()=> {
+      let tempState=await accountManager.doCheck();
+      setLogin(tempState);
+      console.log(tempState);
+    }
+    a();
+  },[setLogin,accountManager,loginStatus]
+  )
   return (
     <div className="App">
       <Router>
