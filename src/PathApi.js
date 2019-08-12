@@ -3,9 +3,9 @@ const PATH={
     USER:{
         root: '/users/',
         ME:'/users/me/',
-        LOGIN:'/users/user_login/',
-        LOGOUT:'/users/user_logout/',
-        ID:(id)=> `users/${id}/`,
+        LOGIN:'/tokens/',
+        LOGOUT:(token) => `/tokens/${token}/`,
+        ID:(username)=> `/users/${username}/`,
     },
     ANNOUNCEMENT:{
         root: '/announcements/'

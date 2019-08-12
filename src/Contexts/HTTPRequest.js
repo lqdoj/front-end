@@ -14,7 +14,6 @@ const doPost = async (url,data,header={} ) =>{
 }
 
 const doGet = async (url,header={} ) =>{
-    console.log(header);
     let response = await fetch(api+url,{
             method:'GET',
             headers:{
@@ -26,4 +25,17 @@ const doGet = async (url,header={} ) =>{
     return response;
 }
 
-export {doPost, doGet};
+
+const  doDel = async (url,header={})=>{
+    console.log("AAAAA"+url);
+    let response = await fetch(api+url,{
+        method:'DELETE',
+        headers:{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            ...header,
+        }
+    });
+    return response;
+}
+export {doPost, doGet, doDel};

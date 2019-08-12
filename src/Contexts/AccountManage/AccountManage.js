@@ -1,12 +1,11 @@
 import React from 'react';
 import Cookies from 'universal-cookie';
-import {doPost,doGet} from '../HTTPRequest';
+import {doPost,doGet,doDel} from '../HTTPRequest';
 import {PATH} from '../../PathApi';
 
 class AccountManager{
     constructor(){
         this.cookies=new Cookies();
-        this.cookies.set('token',"");
     }
     async doSignUp(data){
         try{
@@ -25,7 +24,7 @@ class AccountManager{
         console.log("CHECK");
         try{
             console.log(this.cookies.get('token'));
-            let response = await doGet(PATH.USER.ME,{"LQDOJ-TOKEN":`${this.cookies.get('token')}`});
+            let response = await doGet(PATH.USER.ME,{"Authorization":` Token ${this.cookies.get('token')}`});
             console.log(response);
             console.log(response.status===200);
             return (response.status===200);
@@ -52,7 +51,8 @@ class AccountManager{
     }
     async doLogout(){
         try{
-            await doPost(PATH.USER.LOGOUT,null,{"LQDOJ-TOKEN":`${this.cookie.remove('token')}`});   
+            await doDel(PATH.USER.LOGOUT(this.cookies.get('token')),{"Authorization":` Token ${this.cookies.get('token')}`});   
+            this.cookies.remove('token');
         }
         catch (error){
             console.log(error);
