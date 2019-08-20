@@ -1,6 +1,6 @@
 import React,{useContext,useState} from 'react';
 import {Redirect} from 'react-router-dom';
-import PATH from '../../Path';
+import PATH from '../../Routes/Path';
 
 import AccountManageContext from '../../Contexts/AccountManage/AccountManage';
 const LoginSection = (props)=>{

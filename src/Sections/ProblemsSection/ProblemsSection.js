@@ -1,6 +1,7 @@
 import React from 'react';
 import './ProblemsSection.css';
 import ProblemTag from '../../Components/ProblemTag/ProblemTag';
+
 const listOfProblems=[
     {
         id:"0000",
@@ -37,6 +38,7 @@ const displayedProblems=listOfProblems.map(
     }
 )
 const ProblemsSection = (props) =>{
+    console.log("A");
     return(
         <div className="problems-section">
         <table>
@@ -52,5 +54,7 @@ const ProblemsSection = (props) =>{
         </div>
     )
 }
+
+
 
 export default ProblemsSection;

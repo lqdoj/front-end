@@ -1,5 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import './Post.css';
+import {Link} from 'react-router-dom';
+import PATH from '../../Routes/Path';
 const maxLengthContext=1000;
 const getTime = (stringDatetime) =>{
     let datetime=new Date(stringDatetime);
@@ -28,13 +30,13 @@ const Post = (props) =>{
         return ()=>clearInterval(timeId);
     },[setTimePosting,post])
     return(
-        <div id={`post-${props.id}`} className="post-component">
+        <div id={`post-${post.id}`} className="post-component">
             <div className="post-component__title">{post.title} 
             <span>{timePosting}</span>
             </div>
             <div className="post-component__content"> by <span>{post.author}</span> <br></br>
             {post.content.slice(0,Math.min(maxLengthContext,post.content.length))} 
-            {(maxLengthContext>post.content.legnth)?null:"..See more"}
+            {(maxLengthContext>post.content.legnth)?null:<Link to={`${PATH.ANNOUNCEMENTS}${post.id}/`}>"..See more"</Link>}
             </div>
         </div>
     )

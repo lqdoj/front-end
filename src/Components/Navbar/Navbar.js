@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import PATH from '../../Path';
+import PATH from '../../Routes/Path';
 import './Navbar.css';
 
 const displaySections = (sections) =>

@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
 import './Header.css';
 import {Link} from 'react-router-dom';
-import PATH from '../../Path';
+import PATH from '../../Routes/Path';
 import logo from '../../assets/Logotruonglqd.jpg';
 import Navbar from '../Navbar/Navbar';
 

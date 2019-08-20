@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProblemTag.css';
 import {Link} from 'react-router-dom';
-import PATH from '../../Path';
+import PATH from '../../Routes/Path';
 const getRate = (passed,attemped) =>{
     if (attemped===0) return "0%";
     let tempRate=passed / attemped;
