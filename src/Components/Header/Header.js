@@ -10,6 +10,7 @@ import AccountManageContext from '../../Contexts/AccountManage/AccountManage';
 
 const Header = (props) =>{
     let accountManager=useContext(AccountManageContext);
+    console.log(accountManager);
     let setter=props.setLogin;
     const toLogin = (
         <div className="header-component_login-bar">
@@ -21,8 +22,9 @@ const Header = (props) =>{
             </Link>
         </div>
     );    
-    const loggedIn = (
+    const loggedIn =  (
         <div className="header-component_login-bar">
+            <span> Hi <Link to={`${PATH.PROFILE}${accountManager.info.username}/`}>{accountManager.info.username}</Link></span>
             <Link onClick={()=>{
                     accountManager.doLogout();
                     setter(false);

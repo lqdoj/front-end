@@ -5,7 +5,9 @@ import {PATH} from '../../PathApi';
 
 class AccountManager{
     constructor(){
-        this.cookies=new Cookies();
+        this.token=new Cookies();
+        this.info={username:""};
+        this.loadInfo=false;
     }
     async doSignUp(data){
         try{
@@ -21,16 +23,35 @@ class AccountManager{
         }
     }
     async doCheck(){
-        console.log("CHECK");
         try{
-            console.log(this.cookies.get('token'));
-            let response = await doGet(PATH.USER.ME,{"Authorization":` Token ${this.cookies.get('token')}`});
-            console.log(response);
-            console.log(response.status===200);
-            return (response.status===200);
+            console.log(this.token.get('token'));
+            let response = await doGet(PATH.USER.ME,{"Authorization":` Token ${this.token.get('token')}`});
+            if (response.status===200) {
+                let responseData= await response.json();
+                this.loadInfo=true;
+                this.info=responseData;
+                return true;
+            }
+            else return false;
         }
         catch(error){
             console.log(error);
+            return (false);
+        }
+    }
+    async doGetUser(username){
+        try{
+            let response = await doGet(PATH.USER.ID(username));
+            if (response.status===200){
+                let responseData= await response.json();
+                console.log(responseData);
+                return [true,responseData];
+            }
+            return [false,{}];
+        }
+        catch(error){
+            console.log(error);
+            return [false,{}];
         }
     }
     async doLogin(data){
@@ -40,8 +61,8 @@ class AccountManager{
             let responseData = await response.json();
             console.log(responseData);
             if (response.status===200){
-                this.cookies.set('token',responseData.token,{path:'/'});    
-                return [true,""];
+                this.token.set('token',responseData.token,{path:'/'});    
+                return [this.doCheck(),""];
             }
             return [false,JSON.stringify(responseData)];
         }
@@ -51,8 +72,9 @@ class AccountManager{
     }
     async doLogout(){
         try{
-            await doDel(PATH.USER.LOGOUT(this.cookies.get('token')),{"Authorization":` Token ${this.cookies.get('token')}`});   
-            this.cookies.remove('token');
+            this.loadInfo=false;
+            await doDel(PATH.USER.LOGOUT(this.token.get('token')),{"Authorization":` Token ${this.token.get('token')}`});   
+            this.token.remove('token');
         }
         catch (error){
             console.log(error);

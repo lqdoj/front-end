@@ -8,7 +8,7 @@ import NotFound from './Sections/NotFound/NotFound';
 import HomeSection from './Sections/HomeSection/HomeSection';
 
 
-import {ProblemsRoute, AuthenticationRoute, AnnouncementsRoute} from './Routes/Routes';
+import {ProblemsRoute, AuthenticationRoute, AnnouncementsRoute,ProfileRoute} from './Routes/Routes';
 
 import AccountManageContext from './Contexts/AccountManage/AccountManage';
 
@@ -43,7 +43,7 @@ const App = () => {
                         }}/>
               <Route path={PATH.PROBLEMS} component={ProblemsRoute}/>
               <Route path={PATH.ANNOUNCEMENTS} component={AnnouncementsRoute}/>
-              
+              <Route path={PATH.PROFILE} component={ProfileRoute}/>
               {/*this is no match page*/}
               <Route component = {NotFound}/>
             </Switch>

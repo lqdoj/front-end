@@ -2,7 +2,7 @@ import React,{useContext,useState} from 'react';
 import {Redirect} from 'react-router-dom';
 import PATH from '../../Routes/Path';
 
-import AccountManageContext from '../../Contexts/AccountManage/AccountManage';
+import {AccountManageContext} from '../../Contexts/Contexts';
 const LoginSection = (props)=>{
     let accountManager=useContext(AccountManageContext);
     console.log(accountManager);

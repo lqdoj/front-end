@@ -8,5 +8,6 @@ const PATH={
     FAQ:"/faq/",
     BUG_REPORT:"/report/",
     ANNOUNCEMENTS:"/announcements/",
+    PROFILE:"/profile/",
 }
 export default PATH;

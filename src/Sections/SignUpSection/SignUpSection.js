@@ -1,7 +1,7 @@
 import React,{useState,useContext} from 'react';
 import {Redirect} from 'react-router-dom';
 import PATH from '../../Routes/Path';
-import AccountManageContext from '../../Contexts/AccountManage/AccountManage';
+import {AccountManageContext} from '../../Contexts/Contexts';
 
 const SignUpSection = () =>{
     let accountManager=useContext(AccountManageContext);

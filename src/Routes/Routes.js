@@ -1,4 +1,5 @@
 import AuthenticationRoute from './Authentication';
 import ProblemsRoute from './Problems';
 import AnnouncementsRoute from './Announcements';
-export {AuthenticationRoute, ProblemsRoute, AnnouncementsRoute};
+import ProfileRoute from './Profile';
+export {AuthenticationRoute, ProblemsRoute, AnnouncementsRoute, ProfileRoute};

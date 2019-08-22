@@ -8,7 +8,6 @@ const ProblemsRoute = (props) =>{
     
     return(
         <Switch>
-        aa
             <Route exact path={PATH.PROBLEMS} component={ProblemsSection}/>
             <Route path={`${PATH.PROBLEMS}:id/`} component={ProblemWithIDSection}/>            
         </Switch>
