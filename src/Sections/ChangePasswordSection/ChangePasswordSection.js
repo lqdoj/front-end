@@ -7,11 +7,11 @@ const ChangePasswordSection = (props) =>{
     let accountManager=useContext(AccountManageContext);
     const [status,setStatus]=useState([false,""]);
     const handleSubmit = async (e)=>{
-        const oldpassword=document.getElementById("change-old-password")
+        const oldpassword=document.getElementById("change-old-password").value;
         const password=document.getElementById("change-new-password").value;
         const password2=document.getElementById("change-new-password2").value;
-        if () {console.log("error");return;}
-        let response = await accountManager.doSignUp(
+        if (oldpassword===""||password===""||password2==="") {console.log("error");return;}
+        let response = await accountManager.doChangePassword(
             {
                 old_password:oldpassword,
                 new_password1:password,

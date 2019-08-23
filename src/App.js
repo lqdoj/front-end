@@ -7,7 +7,6 @@ import Footer from './Components/Footer/Footer';
 import NotFound from './Sections/NotFound/NotFound';
 import HomeSection from './Sections/HomeSection/HomeSection';
 
-
 import {ProblemsRoute, AuthenticationRoute, AnnouncementsRoute,ProfileRoute} from './Routes/Routes';
 
 import AccountManageContext from './Contexts/AccountManage/AccountManage';

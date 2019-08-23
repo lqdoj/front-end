@@ -1,5 +1,5 @@
 import React,{useState,useEffect,useContext} from 'react';
-import {Redirect} from 'react-router-dom';
+import {Redirect,Link} from 'react-router-dom';
 import {AccountManageContext} from '../../Contexts/Contexts';
 import PATH from '../../Routes/Path';
 const ProfileSection = (props) =>{
@@ -16,7 +16,8 @@ const ProfileSection = (props) =>{
             if (tryGetUser[0])
             {
                 await setProfile(tryGetUser[1]);
-                setAuth(accountManager.info.username===profile[1].username);
+                console.log(profile);
+                setAuth(accountManager.info.username===tryGetUser[1].username);
             }
             else
             {await setProfile("Not Found")}
@@ -31,7 +32,7 @@ const ProfileSection = (props) =>{
     )
     return(
         <div>
-            {(ifAuth)?(<div><button>Edit Profile</button><button>Change Password</button></div>):null}
+            {(ifAuth)?(<div><button>Edit Profile</button><Link to={PATH.CHANGEPASSWORD}><button>Change Password</button></Link></div>):null}
             <li>Username:{profile.username}</li>
         </div>
     );

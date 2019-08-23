@@ -38,4 +38,32 @@ const  doDel = async (url,header={})=>{
     });
     return response;
 }
-export {doPost, doGet, doDel};
+
+const doPatch = async (url,data,header={} ) =>{
+    let response = await fetch(api+url,{
+            method:'PATCH',
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                ...header,
+            },
+            body: JSON.stringify(data)
+        });
+    return response;
+}
+
+const doPut = async (url,data,header={} ) =>{
+    let response = await fetch(api+url,{
+            method:'PUT',
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                ...header,
+            },
+            body: JSON.stringify(data)
+        });
+    return response;
+}
+
+
+export {doPost, doGet, doDel, doPatch, doPut};
