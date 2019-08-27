@@ -1,6 +1,6 @@
 import React from 'react';
 import Cookies from 'universal-cookie';
-import {doPost,doGet,doDel, doPatch} from '../HTTPRequest';
+import {doPost,doGet,doDel, doPatch, doPut} from '../HTTPRequest';
 import {PATH} from '../../PathApi';
 
 class AccountManager{
@@ -31,6 +31,23 @@ class AccountManager{
             if (response.status===200)
                 return [true];
             let responseData = await response.json();
+            
+            return [false,JSON.stringify(responseData)];
+        }
+        catch(error){
+            console.log(error);
+            return [false,error.toString()];
+        }
+    }
+    async doChangeInfo(data){
+        console.log(data);
+        try{
+            let response= await doPut(PATH.USER.ID(this.info.username),data,{"Authorization":` Token ${this.token.get('token')}`});
+            console.log(response);
+            if (response.status===200)
+                return [true];
+            let responseData = await response.json();
+            console.log(responseData);
             return [false,JSON.stringify(responseData)];
         }
         catch(error){

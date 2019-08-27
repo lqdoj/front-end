@@ -3,6 +3,7 @@ const PATH={
     LOGIN:"/user/log-in/",
     SIGNUP:"/user/sign-up",
     CHANGEPASSWORD:"/user/change-password",
+    CHANGEINFO:"/user/change-info",
     HOME:"/",
     CONTESTS:"/contests/",
     PROBLEMS:"/problems/",
