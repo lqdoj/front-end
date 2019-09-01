@@ -3,6 +3,9 @@ import {Redirect} from 'react-router-dom';
 import PATH from '../../Routes/Path';
 import {AccountManageContext} from '../../Contexts/Contexts';
 
+
+import "bootstrap/dist/css/bootstrap.min.css";
+
 const SignUpSection = () =>{
     let accountManager=useContext(AccountManageContext);
     const [status,setStatus]=useState([false,""]);
@@ -35,21 +38,39 @@ const SignUpSection = () =>{
             {(status[0])?
             <Redirect to={PATH.HOME}/>
             :(<React.Fragment>
-                <label>First Name:</label>
-                <input id="register-firstname" type="text"/>
-                <label>Last Name:</label>
-                <input id="register-lastname" type="text"/>
-                <label>Date of Birth:</label>
-                <input id="register-dob" type="date"/>
-                <label> User Name:</label>
-                <input id="register-user-name" type="text"/>
-                <label> Email: </label>
-                <input id="register-email" type="email"/>
-                <label> Password:</label>
-                <input id="register-password" type="password"/>
-                <label> ReEnter Password:</label>
-                <input id="register-password2" type="password"/>
-                <button onClick={handleSubmit}> submit</button>
+                <form>
+                    <div className="form-group">
+                    <label>First Name:</label>
+                    <input id="register-firstname" type="text"/>
+                    </div>
+                    <div className="form-group">
+                    <label for="register-lastname">Last Name:</label>
+                    <input id="register-lastname" type="text"/>
+                    </div>
+                    <div className="form-group">
+                    <label for="register-dob">Date of Birth:</label>
+                    <input id="register-dob" type="date"/>
+                    </div>
+                    <div className="form-group">
+                    <label for="register-username"> User Name:</label>
+                    <input id="register-user-name" type="text"/>
+                    </div>
+                    <div className="form-group">
+                    <label for="register-email"> Email: </label>
+                    <input id="register-email" type="email"/>
+                    </div>
+                    <div className="form-group">
+                    <label for="register-password"> Password:</label>
+                    <input id="register-password" type="password"/>
+                    </div>
+                    <div className="form-group">
+                    <label for="register-password2"> ReEnter Password:</label>
+                    <input id="register-password2" type="password"/>
+                    </div>
+                    
+                    
+                    <button onClick={handleSubmit} className="btn btn-primary">Submit</button>
+                </form>
             </React.Fragment>
             )}
         </div>

@@ -3,6 +3,8 @@ import {Redirect} from 'react-router-dom';
 import PATH from '../../Routes/Path';
 import {AccountManageContext} from '../../Contexts/Contexts';
 
+import 'bootstrap/dist/css/bootstrap.min.css';//include css
+
 const EditProfileSection = (props) =>{
     let accountManager=useContext(AccountManageContext);
     const [status,setStatus]=useState([false,""]);
@@ -27,13 +29,21 @@ const EditProfileSection = (props) =>{
             {(status[0])?
             <Redirect to={PATH.HOME}/>
             :(<React.Fragment>
-                <label> New First Name:</label>
-                <input id="change-first-name" type="text"/>
-                <label> New Last Name:</label>
-                <input id="change-last-name" type="text"/>
-                <label> New Email:</label>
-                <input id="change-email" type="text"/>
-                <button onClick={handleSubmit}> submit</button>
+                <form>
+                    <div className="form-group"> 
+                        <label for="change-first-name"> New First Name:</label>
+                        <input id="change-first-name" type="text" placeholder={accountManager.info.first_name?accountManager.info.first_name:"enter your first name"}/>
+                    </div>
+                        <div className="form-group"> 
+                        <label> New Last Name:</label>
+                        <input id="change-last-name" type="text" placeholder={accountManager.info.last_name?accountManager.info.last_name:"enter your lastname"}/>
+                    </div>
+                    <div className="form-group">
+                        <label for="change-email"> New Email:</label>
+                        <input id="change-email" type="text" placeholder={accountManager.info.email?accountManager.info.email:"enter your email"}/>
+                    </div>
+                    <button onClick={handleSubmit} className="btn btn-primary">Submit</button>
+                </form>
             </React.Fragment>
             )}
         </div>

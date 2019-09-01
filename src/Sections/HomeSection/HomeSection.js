@@ -44,6 +44,32 @@ const HomeSection = (props) =>{
         setPage(page);
         setPostToPage(page);
     }
+    const listNOP=(curPage,NoP)=>{
+        const displayN=[null,null,null,null,null]
+        if (NoP<=5)
+        {
+            for (var i=0;i<NoP;i++) displayN[i]=i+1;
+        }
+        else
+        {
+            let st=1,fn=5;
+            st=curPage-2;
+            fn=curPage+2;
+            while (st<1) {st=st+1;fn=fn+1;}
+            while (fn>NoP) {st=st-1;fn=fn-1;}
+            for (var i=0;i<5;i++) displayN[i]=st+i;
+        }
+        return(
+            <span> {(displayN[0]===1)?null:"..."}
+            {(displayN).map((page,id)=>{
+                console.log(curPage===page);
+                if (page===null) return page;
+                if (page===curPage) return (<b>{page+" "}</b>);
+                return (<span onClick={()=>{toPage(page)}}>{page}</span>)
+            })}
+            {(displayN[5]===NoP)?null:"..."}</span>
+        )
+    }
     const displayNumOfPage = (NoP,curPage) =>{
         if (NoP === 0) return null;
         console.log(curPage);
@@ -51,7 +77,7 @@ const HomeSection = (props) =>{
         <div> 
             {(curPage!==1)?<span onClick={()=>{toPage(1)}}> {" << "} </span>:null}
             {(curPage!==1)?<span onClick={()=>{toPage(curPage-1)}}> {" < "} </span>:null}
-                {curPage} 
+                {listNOP(curPage,NoP)}
             {(curPage!==NoP)?<span onClick={()=>{toPage(curPage+1)}}> {" > "} </span>:null}
             {(curPage!==NoP)?<span onClick={()=>{toPage(NoP)}}> {" >> "} </span>:null}
         </div>

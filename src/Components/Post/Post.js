@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import './Post.css';
 import {Link} from 'react-router-dom';
 import PATH from '../../Routes/Path';
+import 'bootstrap/dist/css/bootstrap.min.css';
 const maxLengthContext=1000;
 const getTime = (stringDatetime) =>{
     let datetime=new Date(stringDatetime);
@@ -34,9 +35,9 @@ const Post = (props) =>{
             <div className="post-component__title">{post.title} 
             <span>{timePosting}</span>
             </div>
-            <div className="post-component__content"> by <span>{post.author}</span> <br></br>
+            <div className="post-component__content"> <small>by </small> <span className="badge badge-warning">{post.author}</span> <br></br>
             {post.content.slice(0,Math.min(maxLengthContext,post.content.length))} 
-            {(maxLengthContext>post.content.legnth)?null:<Link to={`${PATH.ANNOUNCEMENTS}${post.id}/`}>"..See more"</Link>}
+            {(maxLengthContext>post.content.legnth)?null:<Link to={`${PATH.ANNOUNCEMENTS}${post.id}/`}>..See more</Link>}
             </div>
         </div>
     )

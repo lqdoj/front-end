@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {doPost, doGet} from '../HTTPRequest';
+import {doGet} from '../HTTPRequest';
 import {PATH} from '../../PathApi';
 class AnnouncementManager{
     constructor(){

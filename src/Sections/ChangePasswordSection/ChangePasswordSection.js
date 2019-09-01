@@ -3,6 +3,8 @@ import {Redirect} from 'react-router-dom';
 import PATH from '../../Routes/Path';
 import {AccountManageContext} from '../../Contexts/Contexts';
 
+import 'bootstrap/dist/css/bootstrap.min.css';//include css
+
 const ChangePasswordSection = (props) =>{
     let accountManager=useContext(AccountManageContext);
     const [status,setStatus]=useState([false,""]);
@@ -27,13 +29,21 @@ const ChangePasswordSection = (props) =>{
             {(status[0])?
             <Redirect to={PATH.HOME}/>
             :(<React.Fragment>
-                <label> Old Password:</label>
-                <input id="change-old-password" type="password"/>
-                <label> New Password:</label>
-                <input id="change-new-password" type="password"/>
-                <label> ReEnter New Password:</label>
-                <input id="change-new-password2" type="password"/>
-                <button onClick={handleSubmit}> submit</button>
+                <form>
+                <div className="form-group">
+                    <label for="change-old-password"> Old Password:</label>
+                    <input id="change-old-password" type="password"  placeholder="Enter Password"/>
+                </div>
+                <div className="form-group">
+                <label for="change-new-password"> New Password:</label>
+                <input id="change-new-password" type="password"   placeholder="Enter new Password"/>
+                </div>
+                <div className="form-group">
+                <label for="change-new-password2"> ReEnter New Password:</label>
+                <input id="change-new-password2" type="password"  placeholder="ReEnter new Password"/>
+                </div>
+                <button onClick={handleSubmit} className="btn btn-primary"> Submit</button>
+                </form>
             </React.Fragment>
             )}
         </div>

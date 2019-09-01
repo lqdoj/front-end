@@ -2,6 +2,8 @@ import React,{useContext,useState} from 'react';
 import {Redirect} from 'react-router-dom';
 import PATH from '../../Routes/Path';
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import {AccountManageContext} from '../../Contexts/Contexts';
 const LoginSection = (props)=>{
     let accountManager=useContext(AccountManageContext);
@@ -27,13 +29,19 @@ const LoginSection = (props)=>{
             <div>{status[1]}</div>
         {status[0]?<Redirect to={PATH.HOME}/>:(
             <div>
-        <label> User Name:</label>
-        <input id="login-user-name" type="text"/>
-        <label> Password:</label>
-        <input id="login-password" type="password"/>
-        <button onClick={handleLogin}> Log in</button>
-        </div>
-    )}
+                <form>
+                    <div className="form-group">
+                    <label for="login-user-name"> User Name:</label>
+                    <input id="login-user-name" type="text"/>
+                    </div>
+                    <div className="form-group">
+                        <label for="login-password"> Password:</label>
+                        <input id="login-password" type="password"/>
+                    </div>
+                    <button onClick={handleLogin} className="btn btn-primary"> Log in</button>
+                </form>
+            </div>
+        )}
         </div>
     )
 }

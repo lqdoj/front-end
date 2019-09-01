@@ -3,7 +3,10 @@ import {Redirect,Link} from 'react-router-dom';
 import {AccountManageContext} from '../../Contexts/Contexts';
 import PATH from '../../Routes/Path';
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 const ProfileSection = (props) =>{
+
     const [ifLoad,loaded]=useState(false);
     const [ifAuth,setAuth]=useState(false);
     const [profile,setProfile]=useState(null);
@@ -16,7 +19,7 @@ const ProfileSection = (props) =>{
             setProfile(info[1]);
         }
         getInfo();
-    },[]);//trigger when Component did mount
+    },[props.match.params.id,accountManager]);//trigger when Component did mount
     useEffect(()=>{
         console.log(profile);
         console.log("CHECK");
@@ -25,7 +28,7 @@ const ProfileSection = (props) =>{
             if (profile!=="NotFound")
                 setAuth(props.match.params.id===accountManager.info.username);
         }
-    },[profile]);
+    },[profile,props.match.params.id,accountManager]);
     if (ifLoad===false) return(
         <div>LOADING</div>
     );
@@ -36,19 +39,22 @@ const ProfileSection = (props) =>{
             );
         return(
             <div>
-                <img src={profile.profile.avatar} alt=""/>
+                <div className="card">
+                <div><img src={profile.profile.avatar} alt=""  width="auto"/></div>
                 <p>Name: {profile.first_name} {profile.last_name}</p>
                 <p>username: {profile.username}</p>
-                {(ifAuth)?(<div>
-                    <Link to={PATH.CHANGEPASSWORD}><button>Change Password</button></Link>
-                </div>):null
-                }
+                
                 <p>Email: {profile.email}</p>
                 <p>Joined at {profile.date_joined}</p>
                 {(ifAuth)?(<div>
-                    <Link to={PATH.CHANGEINFO}><button>Edit Info</button></Link>
+                    <Link to={PATH.CHANGEPASSWORD}><button className="btn btn-primary">Change Password</button></Link>
+                </div>):null
+                }
+                {(ifAuth)?(<div>
+                    <Link to={PATH.CHANGEINFO}><button className="btn btn-primary">Edit Info</button></Link>
                 </div>):null
             }
+                </div>
             </div>
         )
     }
