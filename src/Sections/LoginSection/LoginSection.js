@@ -54,7 +54,7 @@ const LoginSection = (props)=>{
                                 </div>
 
                                 
-                                <button class="btn btn-info btn-block my-4" onClick={handleLogin}>Sign in</button>
+                                <button type="button" class="btn btn-info btn-block my-4" onClick={handleLogin}>Sign in</button>
 
                                 <p>Not a member?
                                     <a href="/user/sign-up"> Register</a>

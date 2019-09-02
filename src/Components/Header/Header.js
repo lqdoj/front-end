@@ -26,8 +26,11 @@ const Header = (props) =>{
         <div className="header-component_login-bar">
             <span> Hi <Link to={`${PATH.PROFILE}${accountManager.info.username}/`}>{accountManager.info.username}</Link></span>
             <Link onClick={()=>{
-                    accountManager.doLogout();
+                const logOut= async()=>{
+                    await accountManager.doLogout();
                     setter(false);
+                }
+                    logOut();
                 }
             }
             to={PATH.HOME}>
