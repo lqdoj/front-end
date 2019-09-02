@@ -41,7 +41,7 @@ const SignUpSection = () =>{
             <div class="row justify-content-center align-items-center">
                     <div class="col-md-6">
                         <div class="col-md-12">   
-			                <form>
+			                <div>
 			                	<div class="row justify-content-right align-items-right">
                                     <p class="h4 mb-4 mt-4 col-md-12">Join us!</p>
                                 </div> 
@@ -84,7 +84,7 @@ const SignUpSection = () =>{
                                     <a href="/user/log-in"> Login here</a>
                                 </p> 
 
-			                </form>
+			                </div>
 			            </div>
 			        </div>
 			    </div>
