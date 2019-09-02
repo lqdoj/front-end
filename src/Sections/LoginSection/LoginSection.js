@@ -32,7 +32,7 @@ const LoginSection = (props)=>{
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-6">
                         <div class="col-md-12">                            
-                            <form class="text-center border border-light p-5">
+                            <div class="text-center border border-light p-5">
                                 <div class="row justify-content-right align-items-right">
                                     <p class="h4 mb-4">Sign in</p>
                                 </div>                                
@@ -60,7 +60,7 @@ const LoginSection = (props)=>{
                                     <a href="/user/sign-up"> Register</a>
                                 </p>                                
 
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

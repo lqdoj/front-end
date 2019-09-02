@@ -40,20 +40,22 @@ const ProfileSection = (props) =>{
         return(
             <div>
                 <div className="card">
-                <div><img src={profile.profile.avatar} alt=""  width="auto"/></div>
-                <p>Name: {profile.first_name} {profile.last_name}</p>
-                <p>username: {profile.username}</p>
-                
-                <p>Email: {profile.email}</p>
-                <p>Joined at {profile.date_joined}</p>
-                {(ifAuth)?(<div>
-                    <Link to={PATH.CHANGEPASSWORD}><button className="btn btn-primary">Change Password</button></Link>
-                </div>):null
-                }
-                {(ifAuth)?(<div>
-                    <Link to={PATH.CHANGEINFO}><button className="btn btn-primary">Edit Info</button></Link>
-                </div>):null
-            }
+                    <div>
+                        <img src={profile.profile.avatar} alt=""  width="auto"/>
+                    </div>
+                    <p>Name: {profile.first_name} {profile.last_name}</p>
+                    <p>username: {profile.username}</p>
+                    
+                    <p>Email: {profile.email}</p>
+                    <p>Joined at {profile.date_joined}</p>
+                    {(ifAuth)?(<div>
+                        <Link to={PATH.CHANGEPASSWORD}><button className="btn btn-primary">Change Password</button></Link>
+                    </div>):null
+                    }
+                    {(ifAuth)?(<div>
+                        <Link to={PATH.CHANGEINFO}><button className="btn btn-primary">Edit Info</button></Link>
+                    </div>):null
+                    }
                 </div>
             </div>
         )
