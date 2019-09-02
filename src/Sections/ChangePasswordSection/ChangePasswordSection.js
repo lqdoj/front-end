@@ -42,7 +42,7 @@ const ChangePasswordSection = (props) =>{
                 <label for="change-new-password2"> ReEnter New Password:</label>
                 <input id="change-new-password2" type="password"  placeholder="ReEnter new Password"/>
                 </div>
-                <button onClick={handleSubmit} className="btn btn-primary"> Submit</button>
+                <button type="button" onClick={handleSubmit} className="btn btn-primary"> Submit</button>
                 </form>
             </React.Fragment>
             )}

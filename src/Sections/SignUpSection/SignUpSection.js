@@ -38,53 +38,53 @@ const SignUpSection = () =>{
             {(status[0])?
             <Redirect to={PATH.HOME}/>
             :(<React.Fragment>
-            <div class="row justify-content-center align-items-center">
-                    <div class="col-md-6">
-                        <div class="col-md-12">   
-			                <div>
-			                	<div class="row justify-content-right align-items-right">
-                                    <p class="h4 mb-4 mt-4 col-md-12">Join us!</p>
+            <div className="row justify-content-center align-items-center">
+                    <div className="col-md-6">
+                        <div className="col-md-12">   
+			                <form className="text-center border border-light p-5">
+			                	<div className="row justify-content-right align-items-right">
+                                    <p className="h4 mb-4 mt-4 col-md-12">Join us!</p>
                                 </div> 
-			                    <div className="form-group row">
-			                    	<div class="col">
+			                    <div classNameName="form-group row">
+			                    	<div className="col">
 					                    <label>First Name</label>
-					                    <input id="register-firstname" type="text" class="form-control"/>
+					                    <input id="register-firstname" type="text" className="form-control"/>
 					                </div>
-					                <div class="col">
+					                <div className="col">
 					                    <label for="register-lastname">Last Name</label>
-				                    <input id="register-lastname" type="text" class="form-control"/>
+				                    <input id="register-lastname" type="text" className="form-control"/>
 					                </div>
 			                    </div>
-			                    <div className="form-group">
+			                    <div classNameName="form-group">
 				                    <label for="register-dob">Date of Birth</label>
-				                    <input id="register-dob" type="date" class="form-control"/>
+				                    <input id="register-dob" type="date" className="form-control"/>
 			                    </div>
-			                    <div className="form-group">
+			                    <div classNameName="form-group">
 				                    <label for="register-username"> User Name</label>
-				                    <input id="register-user-name" type="text" class="form-control"/>
+				                    <input id="register-user-name" type="text" className="form-control"/>
 			                    </div>
-			                    <div className="form-group">
+			                    <div classNameName="form-group">
 				                    <label for="register-email"> Email: </label>
-				                    <input id="register-email" type="email" class="form-control"/>
+				                    <input id="register-email" type="email" className="form-control"/>
 			                    </div>
-			                    <div className="form-group row">
-			                    	<div class="col">
+			                    <div classNameName="form-group row">
+			                    	<div className="col">
 					                    <label for="register-password"> Password</label>
-					                    <input id="register-password" type="password" class="form-control"/>
+					                    <input id="register-password" type="password" className="form-control"/>
 				                	</div>
-				                	<div class="col">
+				                	<div className="col">
 					                    <label for="register-password2"> ReEnter Password</label>
-				                    	<input id="register-password2" type="password" class="form-control"/>
+				                    	<input id="register-password2" type="password" className="form-control"/>
 				                	</div>
 			                    </div>
 			                    			                   
-			                    <button onClick={handleSubmit} class="btn btn-info btn-block my-4">Create account</button>
+			                    <button type="button" onClick={handleSubmit} className="btn btn-info btn-block my-4">Create account</button>
 
 			                    <p>Already have an account?
                                     <a href="/user/log-in"> Login here</a>
                                 </p> 
 
-			                </div>
+			                </form>
 			            </div>
 			        </div>
 			    </div>

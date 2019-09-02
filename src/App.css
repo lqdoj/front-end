@@ -6,5 +6,5 @@
 .app-body{
     padding-bottom: 15vh;
     display: grid;
-    grid-template-columns: 5fr 1fr;
+    
 }

@@ -48,7 +48,7 @@ const HomeSection = (props) =>{
         const displayN=[null,null,null,null,null]
         if (NoP<=5)
         {
-            for (var i=0;i<NoP;i++) displayN[i]=i+1;
+            for (let i=0;i<NoP;i++) displayN[i]=i+1;
         }
         else
         {
@@ -57,7 +57,7 @@ const HomeSection = (props) =>{
             fn=curPage+2;
             while (st<1) {st=st+1;fn=fn+1;}
             while (fn>NoP) {st=st-1;fn=fn-1;}
-            for (var i=0;i<5;i++) displayN[i]=st+i;
+            for (let i=0;i<5;i++) displayN[i]=st+i;
         }
         return(
             <span> {(displayN[0]===1)?null:"..."}

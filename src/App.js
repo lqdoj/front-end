@@ -47,8 +47,7 @@ const App = () => {
               <Route component = {NotFound}/>
             </Switch>
           </div>
-          <div className="app-body_right">
-          </div>
+          
         </div>
           {/* Above is main part of website */}
         <Footer/>

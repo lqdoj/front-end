@@ -8,7 +8,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const ProfileSection = (props) =>{
 
     const [ifLoad,loaded]=useState(false);
-    const [ifAuth,setAuth]=useState(false);
     const [profile,setProfile]=useState(null);
     let accountManager=useContext(AccountManageContext);
     useEffect(()=>{
@@ -25,8 +24,6 @@ const ProfileSection = (props) =>{
         console.log("CHECK");
         if (profile!==null) {
             loaded(true);
-            if (profile!=="NotFound")
-                setAuth(props.match.params.id===accountManager.info.username);
         }
     },[profile,props.match.params.id,accountManager]);
     if (ifLoad===false) return(
@@ -48,11 +45,12 @@ const ProfileSection = (props) =>{
                     
                     <p>Email: {profile.email}</p>
                     <p>Joined at {profile.date_joined}</p>
-                    {(ifAuth)?(<div>
+                    
+                    {(accountManager.info.username===props.match.params.id)?(<div>
                         <Link to={PATH.CHANGEPASSWORD}><button className="btn btn-primary">Change Password</button></Link>
                     </div>):null
                     }
-                    {(ifAuth)?(<div>
+                    {(accountManager.info.username===props.match.params.id  )?(<div>
                         <Link to={PATH.CHANGEINFO}><button className="btn btn-primary">Edit Info</button></Link>
                     </div>):null
                     }

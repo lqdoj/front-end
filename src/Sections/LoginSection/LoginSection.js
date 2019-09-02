@@ -29,38 +29,38 @@ const LoginSection = (props)=>{
             <div>{status[1]}</div>
         {status[0]?<Redirect to={PATH.HOME}/>:(
             <div>
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-md-6">
-                        <div class="col-md-12">                            
-                            <div class="text-center border border-light p-5">
-                                <div class="row justify-content-right align-items-right">
-                                    <p class="h4 mb-4">Sign in</p>
+                <div className="row justify-content-center align-items-center">
+                    <div className="col-md-6">
+                        <div className="col-md-12">                            
+                            <form className="text-center border border-light p-5">
+                                <div className="row justify-content-right align-items-right">
+                                    <p className="h4 mb-4">Sign in</p>
                                 </div>                                
 
-                                <input type="text" id="login-user-name" class="form-control mb-4" placeholder="Username"/>
+                                <input type="text" id="login-user-name" className="form-control mb-4" placeholder="Username"/>
                 
-                                <input type="password" id="login-password" class="form-control mb-4" placeholder="Password"/>
+                                <input type="password" id="login-password" className="form-control mb-4" placeholder="Password"/>
 
-                                <div class="d-flex justify-content-around">
+                                <div className="d-flex justify-content-around">
                                     <div>                                        
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember"/>
-                                            <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                                        <div className="custom-control custom-checkbox">
+                                            <input type="checkbox" className="custom-control-input" id="defaultLoginFormRemember"/>
+                                            <label className="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
                                         </div>
                                     </div>
                                     <div>                                        
-                                        <a href="">Forgot password?</a>
+                                        <a href="/">Forgot password?</a>
                                     </div>
                                 </div>
 
                                 
-                                <button type="button" class="btn btn-info btn-block my-4" onClick={handleLogin}>Sign in</button>
+                                <button type="button" className="btn btn-info btn-block my-4" onClick={handleLogin}>Sign in</button>
 
                                 <p>Not a member?
                                     <a href="/user/sign-up"> Register</a>
                                 </p>                                
 
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

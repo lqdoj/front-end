@@ -42,7 +42,7 @@ const EditProfileSection = (props) =>{
                         <label for="change-email"> New Email:</label>
                         <input id="change-email" type="text" placeholder={accountManager.info.email?accountManager.info.email:"enter your email"}/>
                     </div>
-                    <button onClick={handleSubmit} className="btn btn-primary">Submit</button>
+                    <button type="button" onClick={handleSubmit} className="btn btn-primary">Submit</button>
                 </form>
             </React.Fragment>
             )}
