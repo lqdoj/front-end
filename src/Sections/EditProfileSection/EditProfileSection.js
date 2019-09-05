@@ -12,12 +12,15 @@ const EditProfileSection = (props) =>{
         const first_name=document.getElementById("change-first-name").value;
         const last_name=document.getElementById("change-last-name").value;
         const email=document.getElementById("change-email").value;
+        let image=document.getElementById("change-image").files[0];
+        if (!image) image=null;
         if (first_name===""&&last_name===""&&email==="") {console.log("error");return;}
         let response = await accountManager.doChangeInfo(
             {
                 first_name:(first_name==="")?accountManager.info.first_name:first_name,
                 last_name:(last_name==="")?accountManager.info.last_name:last_name,
-                email:(email==="")?accountManager.info.email:email
+                email:(email==="")?accountManager.info.email:email,
+                image:image
             })
         setStatus(prev=>{
             return response    
@@ -41,6 +44,10 @@ const EditProfileSection = (props) =>{
                     <div className="form-group">
                         <label for="change-email"> New Email:</label>
                         <input id="change-email" type="text" placeholder={accountManager.info.email?accountManager.info.email:"enter your email"}/>
+                    </div>
+                    <div className="form-group">
+                        <label for="change-image"> New Image</label>
+                        <input id="change-image" type="file"/>
                     </div>
                     <button type="button" onClick={handleSubmit} className="btn btn-primary">Submit</button>
                 </form>

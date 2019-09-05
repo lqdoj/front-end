@@ -60,7 +60,7 @@ const doPut = async (url,data,header={} ) =>{
                 'Content-Type': 'application/json',
                 ...header,
             },
-            body: JSON.stringify(data)
+            body:data
         });
     return response;
 }

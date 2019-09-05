@@ -40,9 +40,19 @@ class AccountManager{
         }
     }
     async doChangeInfo(data){
+        console.log(typeof(data));
         console.log(data);
         try{
-            let response= await doPut(PATH.USER.ID(this.info.username),data,{"Authorization":` Token ${this.token.get('token')}`});
+            let formData=new FormData();
+            let keys=Object.keys(data);
+            keys.forEach(key => {
+                formData.append(key,data[key]);
+            });
+            console.log(formData);
+            for(var pair of formData.entries()) {
+                console.log(pair[0]+ ', '+ pair[1]); 
+             }
+            let response= await doPut(PATH.USER.ID(this.info.username),formData,{"Authorization":` Token ${this.token.get('token')}`});
             console.log(response);
             if (response.status===200)
                 return [true];
