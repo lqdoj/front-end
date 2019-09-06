@@ -57,7 +57,6 @@ const doPut = async (url,data,header={} ) =>{
             method:'PUT',
             headers:{
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
                 ...header,
             },
             body:data

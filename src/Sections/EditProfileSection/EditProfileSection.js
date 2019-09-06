@@ -20,7 +20,7 @@ const EditProfileSection = (props) =>{
                 first_name:(first_name==="")?accountManager.info.first_name:first_name,
                 last_name:(last_name==="")?accountManager.info.last_name:last_name,
                 email:(email==="")?accountManager.info.email:email,
-                image:image
+                avatar:image
             })
         setStatus(prev=>{
             return response    
