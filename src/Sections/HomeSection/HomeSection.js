@@ -16,34 +16,39 @@ const displayedPosts = (listOfPosts) =>{
 
 const HomeSection = (props) =>{
     let announcementManager=useContext(AnnouncementManageContext);
-    const [listOfPosts,setPosts]=useState([]);
+    const [listOfPosts,setPosts]=useState(null);
     const [isLoading,setLoading]=useState(true);
-    const [pageDisplay,setPage]=useState(0);
+    const [pageDisplay,setPage]=useState(1);
     const [numberOfPage,setNoP]=useState(0);
-    const setPostToPage = async (page)=>{
-        let posts=await announcementManager.doList(page);
-        setPosts(posts.results);
+    const toPage = async (page)=>{
+        setLoading(true);
+        setPage(page);  
     }
     useEffect(()=>{
-        console.log(isLoading);
-        const listPage= async ()=>{
-            let posts= await announcementManager.doList(1);
-            setPosts(posts.results);
-            setNoP(parseInt((posts.count-1)/ posts.results.length)+1);
-            console.log(posts);
+        const getAnnouncements= async()=>{
+            let posts= await announcementManager.doList(pageDisplay);
+            if (posts) 
+            {
+                setPosts(posts.results);    
+                setNoP(parseInt((posts.count-1)/ posts.results.length)+1);
+            }
+            else setPosts([]);
         }
-        if (isLoading){
-            
-            setLoading(false);
-            setPage(1);
-            listPage();
-        }
-    },[setLoading,isLoading,announcementManager]
-    )
-    const toPage = (page) =>{
-        setPage(page);
-        setPostToPage(page);
-    }
+        getAnnouncements();
+    },[announcementManager,pageDisplay]);//trigger when component did mount
+    useEffect(()=>{
+        console.log(listOfPosts);
+        if (listOfPosts) setLoading(false);            
+    },[listOfPosts]);//trigger when receive
+    if (isLoading==true)
+        return(
+            <div>LOADING</div>
+        );//render when page is loading
+    if (isLoading==false && listOfPosts.length===0)
+        return(
+            <div> No posts</div>
+        );//render when there is no posts.
+    //the below code is to load page.
     const listNOP=(curPage,NoP)=>{
         const displayN=[null,null,null,null,null]
         if (NoP<=5)
