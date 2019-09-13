@@ -30,7 +30,7 @@ const HomeSection = (props) =>{
             if (posts) 
             {
                 setPosts(posts.results);    
-                setNoP(parseInt((posts.count-1)/ posts.results.length)+1);
+                if (pageDisplay===1) setNoP(parseInt((posts.count-1)/ posts.results.length)+1);
             }
             else setPosts([]);
         }
@@ -54,6 +54,7 @@ const HomeSection = (props) =>{
         if (NoP<=5)
         {
             for (let i=0;i<NoP;i++) displayN[i]=i+1;
+            console.log("Y");
         }
         else
         {
@@ -63,16 +64,19 @@ const HomeSection = (props) =>{
             while (st<1) {st=st+1;fn=fn+1;}
             while (fn>NoP) {st=st-1;fn=fn-1;}
             for (let i=0;i<5;i++) displayN[i]=st+i;
+            console.log("X");
         }
+        console.log(displayN);
         return(
-            <span> {(displayN[0]===1)?null:"..."}
+            <span> 
+            {(displayN[0]===1)?null:"..."}
             {(displayN).map((page,id)=>{
                 console.log(curPage===page);
-                if (page===null) return page;
+                if (page===null) return null;
                 if (page===curPage) return (<b>{page+" "}</b>);
                 return (<span onClick={()=>{toPage(page)}}>{page}</span>)
             })}
-            {(displayN[5]===NoP)?null:"..."}</span>
+            {(displayN[4]===NoP || displayN[4]===null)?null:"..."}</span>
         )
     }
     const displayNumOfPage = (NoP,curPage) =>{
