@@ -1,14 +1,16 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
 import PATH from '../../Routes/Path';
-import './Navbar.css';
+import { Navbar as NavBar } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 
 const displaySections = (sections) =>
 {
     return sections.map((section,idx)=>
         {
             return (
-                <NavLink key={idx} exact to={PATH[section]} activeClassName="active-nav-link"> {section} </NavLink>
+                <Nav.Link key={idx} href={PATH[section]} >
+                    {section}
+                </Nav.Link>
             )
         })
 }
@@ -16,9 +18,17 @@ const displaySections = (sections) =>
 const Navbar = (props) =>{
     console.log(props.listOfSections);
     return (
-        <div id="navbar" className="navbar-component">
-            {displaySections(props.listOfSections)}
-        </div>
+        <NavBar bg="info" expand="lg">
+            <NavBar.Brand href="/">
+                { 'LQDOJ' }
+            </NavBar.Brand>
+            <NavBar.Toggle aria-controls="basic-navbar-nav" />
+            <NavBar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto">
+                    {displaySections(props.listOfSections)}
+                </Nav>
+            </NavBar.Collapse>
+        </NavBar>
     );
 };
 

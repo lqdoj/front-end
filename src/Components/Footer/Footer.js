@@ -3,7 +3,7 @@ import './Footer.css'
 const Footer =()=>{
     return(
         <div className="footer-component">
-            This is Footer 
+            Developers: Bang Nguyen, Khanh Le, Kiet Ho, Luong Doan. 
         </div>
     )
 }
