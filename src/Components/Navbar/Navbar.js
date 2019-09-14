@@ -5,6 +5,7 @@ import { Navbar as NavBar } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
 import {FormControl, Form} from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+
 import ComputerIcon from '@material-ui/icons/Computer';
 import EventIcon from '@material-ui/icons/Event';
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -33,13 +34,6 @@ const additionalIcon={
     PROBLEMS:<AssignmentIcon></AssignmentIcon>,
     FAQ:<HelpIcon></HelpIcon>,
     BUG_REPORT:<BugReportIcon></BugReportIcon>,
-}
-
-const customIcon = (tagName) => {
-    var CustomTag = `${tagName}`;
-    return (
-        <CustomTag>aaa</CustomTag>
-    );
 }
 
 const displaySections = (sections) =>

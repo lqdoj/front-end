@@ -14,7 +14,10 @@ table{
 }
 th{
     border-bottom: red solid 1px;
-    
+}
+
+th svg{
+    margin-right: 0.2em;
 }
 
 td{

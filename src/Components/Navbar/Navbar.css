@@ -1,7 +1,12 @@
 .navbar-component{
     font-family: Arial !important;
 }
+
 .navbar-component > * {
+}
+
+.navbar-component svg{
+    margin-right: 0.3em;
 }
 
 .active-nav-link{
