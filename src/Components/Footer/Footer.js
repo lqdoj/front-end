@@ -21,7 +21,7 @@ const label = {
 
 const linkElt = (name) => {
     return (
-        <a href={linkTo[name]} target="_blank">
+        <a href={linkTo[name]} target="_blank" rel="noopener noreferrer">
             {label[name]}
         </a>
     )
