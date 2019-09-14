@@ -1,6 +1,7 @@
 import React from 'react';
 import './ProblemsSection.css';
 import ProblemTag from '../../Components/ProblemTag/ProblemTag';
+import { Table } from 'react-bootstrap';
 
 const listOfProblems=[
     {
@@ -41,16 +42,18 @@ const ProblemsSection = (props) =>{
     console.log("A");
     return(
         <div className="problems-section">
-        <table>
-        <tr>
-            <th>id</th>
-            <th>Title</th>
-            <th>tags</th>
-            <th>Difficulty</th>
-            <th>Attemped</th>
-        </tr>
+        <Table striped bordered hover>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên bài</th>
+                    <th>Chủ đề</th>
+                    <th>Độ khó</th>
+                    <th>Lượt thử</th>
+                </tr>
+            </thead>
             {displayedProblems}
-        </table>
+        </Table>
         </div>
     )
 }
