@@ -3,3 +3,6 @@
 
 # lock file
 **/*.lock
+
+# log file
+*.log
