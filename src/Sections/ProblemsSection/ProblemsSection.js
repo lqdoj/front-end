@@ -2,6 +2,11 @@ import React from 'react';
 import './ProblemsSection.css';
 import ProblemTag from '../../Components/ProblemTag/ProblemTag';
 import { Table } from 'react-bootstrap';
+import FingerprintIcon from '@material-ui/icons/Fingerprint';
+import MessageIcon from '@material-ui/icons/Message';
+import ClassIcon from '@material-ui/icons/Class';
+import StarsIcon from '@material-ui/icons/Stars';
+import PollIcon from '@material-ui/icons/Poll';
 
 const listOfProblems=[
     {
@@ -45,11 +50,26 @@ const ProblemsSection = (props) =>{
         <Table striped bordered hover>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Tên bài</th>
-                    <th>Chủ đề</th>
-                    <th>Độ khó</th>
-                    <th>Lượt thử</th>
+                    <th>
+                        <FingerprintIcon></FingerprintIcon>
+                        ID
+                    </th>
+                    <th>
+                        <MessageIcon></MessageIcon>
+                        Tên bài
+                    </th>
+                    <th>
+                        <ClassIcon></ClassIcon>
+                        Chủ đề
+                    </th>
+                    <th>
+                        <StarsIcon></StarsIcon>
+                        Độ khó
+                    </th>
+                    <th>
+                        <PollIcon></PollIcon>
+                        Lượt thử
+                    </th>
                 </tr>
             </thead>
             {displayedProblems}

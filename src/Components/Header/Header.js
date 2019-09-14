@@ -8,6 +8,9 @@ import {ButtonToolbar, Button} from 'react-bootstrap';
 
 import AccountManageContext from '../../Contexts/AccountManage/AccountManage';
 
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import HowToRegIcon from '@material-ui/icons/HowToReg';
+
 
 const Header = (props) =>{
     let accountManager=useContext(AccountManageContext);
@@ -16,9 +19,11 @@ const Header = (props) =>{
     const toLogin = (
         <ButtonToolbar className="header-component_login-bar">
             <Button href={PATH.LOGIN} type="button" size="md" variant="outline-dark">
+                <VpnKeyIcon></VpnKeyIcon>
                 Đăng nhập
             </Button>
             <Button href={PATH.SIGNUP} type="button" size="md" variant="outline-danger">
+                <HowToRegIcon></HowToRegIcon>
                 Đăng ký
             </Button>
         </ButtonToolbar>
