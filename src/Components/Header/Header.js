@@ -2,10 +2,14 @@ import React,{useContext} from 'react';
 import './Header.css';
 import {Link} from 'react-router-dom';
 import PATH from '../../Routes/Path';
-import logo from '../../assets/Logotruonglqd.jpg';
+import logo from '../../assets/lqd-coders.png';
 import Navbar from '../Navbar/Navbar';
+import {ButtonToolbar, Button} from 'react-bootstrap';
 
 import AccountManageContext from '../../Contexts/AccountManage/AccountManage';
+
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import HowToRegIcon from '@material-ui/icons/HowToReg';
 
 
 const Header = (props) =>{
@@ -13,14 +17,16 @@ const Header = (props) =>{
     console.log(accountManager);
     let setter=props.setLogin;
     const toLogin = (
-        <div className="header-component_login-bar">
-            <Link to={PATH.LOGIN}>
-                Login
-            </Link>
-            <Link to={PATH.SIGNUP}>
-                Register
-            </Link>
-        </div>
+        <ButtonToolbar className="header-component_login-bar">
+            <Button href={PATH.LOGIN} type="button" size="md" variant="outline-dark">
+                <VpnKeyIcon></VpnKeyIcon>
+                Đăng nhập
+            </Button>
+            <Button href={PATH.SIGNUP} type="button" size="md" variant="outline-danger">
+                <HowToRegIcon></HowToRegIcon>
+                Đăng ký
+            </Button>
+        </ButtonToolbar>
     );    
     const loggedIn =  (
         <div className="header-component_login-bar">
@@ -44,7 +50,11 @@ const Header = (props) =>{
             {(props.status===false)?toLogin:loggedIn}
             <div className="logo-div">
                 <a href="/">
-                    <img src={logo} className="top-logo" alt="le quy don logo"/>
+                    <img 
+                        src={logo} 
+                        className="top-logo" 
+                        alt="le quy don logo"
+                    />
                 </a>
             </div>
             <Navbar listOfSections={props.listOfSections}/>
