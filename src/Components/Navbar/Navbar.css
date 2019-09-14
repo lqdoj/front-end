@@ -1,15 +1,7 @@
 .navbar-component{
-    background: rgb(11, 250, 210);
-    display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
+    font-family: Arial !important;
 }
 .navbar-component > * {
-    padding-right: auto;
-    padding-left: auto;
-    flex: 1;
-    text-align: center;
-    border: solid 1px rgb(0, 145, 150) ;
 }
 
 .active-nav-link{

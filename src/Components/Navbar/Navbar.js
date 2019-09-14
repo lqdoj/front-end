@@ -1,7 +1,25 @@
 import React from 'react';
 import PATH from '../../Routes/Path';
+import './Navbar.css';
 import { Navbar as NavBar } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
+import {FormControl, Form} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
+
+const toVietnamese={
+    USER:"Người dùng",
+    LOGIN:"Đăng nhập",
+    SIGNUP:"Đăng ký",
+    CHANGEPASSWORD:"Đổi mật khẩu",
+    CHANGEINFO:"Đổi thông tin",
+    HOME:"TRANG CHỦ",
+    CONTESTS:"CÁC KỲ THI",
+    PROBLEMS:"BÀI TẬP",
+    FAQ:"CÂU HỎI",
+    BUG_REPORT:"BÁO CÁO LỖI",
+    ANNOUNCEMENTS:"THÔNG BÁO",
+    PROFILE:"Hồ sơ",
+}
 
 const displaySections = (sections) =>
 {
@@ -9,7 +27,7 @@ const displaySections = (sections) =>
         {
             return (
                 <Nav.Link key={idx} href={PATH[section]} >
-                    {section}
+                    {toVietnamese[section]}
                 </Nav.Link>
             )
         })
@@ -18,16 +36,18 @@ const displaySections = (sections) =>
 const Navbar = (props) =>{
     console.log(props.listOfSections);
     return (
-        <NavBar bg="info" expand="lg">
-            <NavBar.Brand href="/">
-                { 'LQDOJ' }
-            </NavBar.Brand>
+        <NavBar bg="dark" variant="dark" expand="md" className="navbar-component">
             <NavBar.Toggle aria-controls="basic-navbar-nav" />
             <NavBar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                     {displaySections(props.listOfSections)}
                 </Nav>
             </NavBar.Collapse>
+
+            <Form inline>
+                <FormControl type="text" placeholder="Tìm kiếm" className="mr-sm-1" />
+                <Button variant="outline-success">Tìm</Button>
+            </Form>
         </NavBar>
     );
 };
