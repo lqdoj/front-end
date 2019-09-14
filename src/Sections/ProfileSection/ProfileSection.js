@@ -25,7 +25,7 @@ const ProfileSection = (props) =>{
         if (profile!==null) {
             loaded(true);
         }
-    },[profile,props.match.params.id,accountManager]);
+    },[profile,props.match.params.id]);//trigger when data is loaded
     if (ifLoad===false) return(
         <div>LOADING</div>
     );
