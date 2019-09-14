@@ -2,7 +2,7 @@ import React,{useContext} from 'react';
 import './Header.css';
 import {Link} from 'react-router-dom';
 import PATH from '../../Routes/Path';
-import logo from '../../assets/Logotruonglqd.jpg';
+import logo from '../../assets/Logotruonglqd.png';
 import Navbar from '../Navbar/Navbar';
 
 import AccountManageContext from '../../Contexts/AccountManage/AccountManage';
