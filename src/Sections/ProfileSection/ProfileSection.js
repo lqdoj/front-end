@@ -12,7 +12,7 @@ const ProfileSection = (props) =>{
         const first_name=document.getElementById("change-first-name").value;
         const last_name=document.getElementById("change-last-name").value;
         const email=document.getElementById("change-email").value;
-        const username=document.getElementById("change-username").value;
+        const username=document.getElementById("change-username").textContent;
         let image=document.getElementById("change-image").files[0];
         if (!image) image=null;
         if (first_name===""&&last_name===""&&email==="") {console.log("error");return;}
@@ -74,29 +74,29 @@ const ProfileSection = (props) =>{
                 		</div>
                 		<div className="col">
                 			<div className="form-group">
-								<label for="exampleInputEmail1">Tên tài khoản</label>
-							    <input type="text" className="form-control" id="change-username" defaultValue={profile.username}/>
+								<label>Tên tài khoản</label>
+							    <label className="form-control" id="change-username">{profile.username}</label>
 							</div>
                 			<div className="form-group">
-								<label for="exampleInputEmail1">Họ</label>
+								<label>Họ</label>
 							    <input type="text" className="form-control" id="change-last-name" defaultValue={profile.last_name}/>
 							</div>
 							<div className="form-group">
-								<label for="exampleInputEmail1">Tên</label>
+								<label>Tên</label>
 							    <input type="text" className="form-control" id="change-first-name" defaultValue={profile.first_name}/>
 							</div>
 							<div className="form-group">
-								<label for="exampleInputEmail1">Tên</label>
+								<label>Tên</label>
 							    <input type="email" className="form-control" id="change-email" defaultValue={profile.email}/>
 							</div>
 							<div className="form-group">
-								<label for="exampleInputEmail1">Ngày tham gia</label>
+								<label>Ngày tham gia</label>
 							    <label className="form-control">{profile.date_joined}</label>
 							</div>
 							<div className="row">
 								{(accountManager.info.username===props.match.params.id  )?(
 			                    	<div className="col">
-			                        	<button type="button" onClick={handleSubmit} className="btn btn-primary btn-block">Lưu</button>
+			                        	<Link to="." refresh="true"><button type="button" onClick={handleSubmit} className="btn btn-primary btn-block">Lưu</button></Link>
 			                    	</div>):null
 			                    }
 								{(accountManager.info.username===props.match.params.id)?(
