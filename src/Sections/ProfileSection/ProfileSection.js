@@ -96,7 +96,7 @@ const ProfileSection = (props) =>{
 							<div className="row">
 								{(accountManager.info.username===props.match.params.id  )?(
 			                    	<div className="col">
-			                        	<Link to="." refresh="true"><button type="button" onClick={handleSubmit} className="btn btn-primary btn-block">Lưu</button></Link>
+			                        	<Link to="" refresh="true"><button type="button" onClick={handleSubmit} className="btn btn-primary btn-block">Lưu</button></Link>
 			                    	</div>):null
 			                    }
 								{(accountManager.info.username===props.match.params.id)?(
